@@ -26,7 +26,7 @@ function ParseCSVLine (line,sep)
 	while true do 
 		local c = string.sub(line,pos,pos)
 		if (c == "") then break end
-		if (c == '"') then
+		if (c == '"' and line:find([["]],pos+1,true)) then
 			-- quoted value (ignore separator within)
 			local txt = ""
 			repeat

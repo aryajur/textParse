@@ -41,7 +41,7 @@ function ParseCSVLine (line,sep)
 				--   value1,"blub""blip""boing",value3  will result in blub"blip"boing  for the middle
 			until (c ~= '"')
 			table.insert(res,txt)
-			if not (c == sep or c == "") then
+			if not (c == sep or c == "" or c:match("%c")) then
 				return nil
 			end
 			pos = pos + 1
@@ -60,7 +60,7 @@ function ParseCSVLine (line,sep)
 				--   value1,'blub''blip''boing',value3  will result in blub'blip'boing  for the middle
 			until (c ~= "'")
 			table.insert(res,txt)
-			if not (c == sep or c == "") then
+			if not (c == sep or c == "" or c:match("%c")) then
 				return nil
 			end
 			pos = pos + 1
